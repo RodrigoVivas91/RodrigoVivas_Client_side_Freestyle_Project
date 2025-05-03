@@ -1,0 +1,29 @@
+[
+  {
+    "Title": "The Irishman",
+    "Year": "2019",
+    "Rating": "7.8",
+    "Genre": "Biography, Crime, Drama",
+    "Runtime": "209 min",
+    "Actors": "Robert De Niro, Al Pacino, Joe Pesci",
+    "Poster": "https://m.media-amazon.com/images/I/71F1IYwEf-L._AC_SL1000_.jpg"
+  },
+  {
+    "Title": "Marriage Story",
+    "Year": "2019",
+    "Rating": "7.9",
+    "Genre": "Drama, Romance",
+    "Runtime": "137 min",
+    "Actors": "Scarlett Johansson, Adam Driver",
+    "Poster": "https://m.media-amazon.com/images/I/71g40mlbinL._AC_SY679_.jpg"
+  },
+  {
+    "Title": "Extraction",
+    "Year": "2020",
+    "Rating": "6.8",
+    "Genre": "Action, Thriller",
+    "Runtime": "117 min",
+    "Actors": "Chris Hemsworth, Rudhraksh Jaiswal",
+    "Poster": "https://m.media-amazon.com/images/I/91xBDG1rZ2L._AC_SL1500_.jpg"
+  }
+]
