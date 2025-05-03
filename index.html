@@ -62,9 +62,34 @@
       margin-bottom: 1rem;
     }
 
-    #movie-info img {
-      width: 200px;
+    /* ✅ Flexbox Layout for Movie Info */
+    #movie-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
       margin-top: 1rem;
+    }
+
+    #movie-details {
+      flex: 1 1 300px;
+    }
+
+    #poster {
+      flex: 1 1 250px;
+    }
+
+    #poster img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      #movie-info {
+        flex-direction: column;
+      }
     }
 
     footer {
@@ -86,23 +111,25 @@
 </header>
 
 <nav>
-  <a href="#">Movie selection</a>
+  <a href="#">Our suggestions based on IMDB ratings for the latest content in Netflix</a>
 </nav>
 
 <main>
   <section>
-    <h2>Select a Movie</h2>
+    <h2>See movie details</h2>
     <select id="movie-select">
       <option value="">-- Choose a Movie --</option>
     </select>
 
     <div id="movie-info">
-      <p><strong>Title:</strong> <span id="title">-</span></p>
-      <p><strong>Year:</strong> <span id="year">-</span></p>
-      <p><strong>Rating:</strong> <span id="rating">-</span></p>
-      <p><strong>Genre:</strong> <span id="genre">-</span></p>
-      <p><strong>Runtime:</strong> <span id="runtime">-</span></p>
-      <p><strong>Actors:</strong> <span id="actors">-</span></p>
+      <div id="movie-details">
+        <p><strong>Title:</strong> <span id="title">-</span></p>
+        <p><strong>Year:</strong> <span id="year">-</span></p>
+        <p><strong>Rating:</strong> <span id="rating">-</span></p>
+        <p><strong>Genre:</strong> <span id="genre">-</span></p>
+        <p><strong>Runtime:</strong> <span id="runtime">-</span></p>
+        <p><strong>Actors:</strong> <span id="actors">-</span></p>
+      </div>
       <div id="poster"></div>
     </div>
   </section>
