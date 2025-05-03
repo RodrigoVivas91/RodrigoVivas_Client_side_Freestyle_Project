@@ -1,28 +1,23 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi Página Web Profesional</title>
+  <title>Netflix Movie Suggestions</title>
   <style>
-    * {
-      box-sizing: border-box;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f6f8;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    header {
+    header, footer {
       background-color: #1e2a38;
       color: white;
-      padding: 1rem 2rem;
       text-align: center;
+      padding: 1rem;
     }
 
     nav {
@@ -32,72 +27,123 @@
 
     nav a {
       color: white;
-      margin-right: 15px;
       text-decoration: none;
+      margin-right: 15px;
       font-weight: bold;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
-
     main {
-      padding: 2rem;
-      max-width: 1000px;
+      max-width: 800px;
       margin: auto;
+      padding: 2rem;
     }
 
     section {
-      margin-bottom: 2rem;
       background: white;
-      padding: 1.5rem;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
     }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #1e2a38;
-      color: white;
-      position: relative;
-      bottom: 0;
-      width: 100%;
+    select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+
+    img {
+      width: 200px;
+      margin-top: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .info p {
+      margin: 0.3rem 0;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Mi Página Web Profesional</h1>
-    <p>Subtítulo o mensaje clave aquí</p>
+    <h1>Netflix Movie Suggestions</h1>
+    <p>Curated recommendations with ratings and details</p>
   </header>
 
   <nav>
-    <a href="#">Inicio</a>
-    <a href="#">Servicios</a>
-    <a href="#">Contacto</a>
+    <a href="#">Home</a>
+    <a href="#">Top Picks</a>
   </nav>
 
   <main>
-    <section id="intro">
-      <h2>Bienvenido</h2>
-      <p>Este es el contenido inicial de tu página. Puedes modificarlo para explicar de qué trata el sitio.</p>
-    </section>
+    <section>
+      <h2>Select a Movie</h2>
+      <select id="select-movie">
+        <option value="">-- Choose a movie --</option>
+      </select>
 
-    <section id="contenido-dinamico">
-      <h2>Contenido Dinámico</h2>
-      <p>Aquí aparecerán los datos obtenidos desde el API.</p>
-      <div id="datos"></div>
+      <div id="movie-info" class="info">
+        <p><strong>Title:</strong> <span id="title">-</span></p>
+        <p><strong>Year:</strong> <span id="year">-</span></p>
+        <p><strong>Rating (IMDb):</strong> <span id="rating">-</span></p>
+        <p><strong>Genre:</strong> <span id="genre">-</span></p>
+        <p><strong>Duration:</strong> <span id="runtime">-</span></p>
+        <p><strong>Main Actors:</strong> <span id="actors">-</span></p>
+        <div id="poster-container"></div>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Mi Página Web</p>
+    <p>Netflix Suggestions &copy; 2025</p>
   </footer>
 
   <script>
-    // Aquí podrás insertar tu lógica para hacer fetch a una API
+    const API_URL = "https://raw.githubusercontent.com/prof-rossetti/internet-technologies/main/data/sample-movies.json";
+
+    fetch(API_URL)
+      .then(response => response.json())
+      .then(data => {
+        const dropdown = document.getElementById("select-movie");
+        const title = document.getElementById("title");
+        const year = document.getElementById("year");
+        const rating = document.getElementById("rating");
+        const genre = document.getElementById("genre");
+        const runtime = document.getElementById("runtime");
+        const actors = document.getElementById("actors");
+        const posterContainer = document.getElementById("poster-container");
+
+        // Fill dropdown
+        data.forEach((movie, index) => {
+          const option = document.createElement("option");
+          option.value = index;
+          option.textContent = movie.Title;
+          dropdown.appendChild(option);
+        });
+
+        dropdown.addEventListener("change", () => {
+          const selectedMovie = data[dropdown.value];
+
+          if (selectedMovie) {
+            title.textContent = selectedMovie.Title;
+            year.textContent = selectedMovie.Year;
+            rating.textContent = selectedMovie.Rating;
+            genre.textContent = selectedMovie.Genre;
+            runtime.textContent = selectedMovie.Runtime;
+            actors.textContent = selectedMovie.Actors;
+
+            posterContainer.innerHTML = "";
+            const img = document.createElement("img");
+            img.src = selectedMovie.Poster;
+            img.alt = selectedMovie.Title;
+            posterContainer.appendChild(img);
+          }
+        });
+      })
+      .catch(error => {
+        console.error("Error loading data:", error);
+      });
   </script>
 
 </body>
