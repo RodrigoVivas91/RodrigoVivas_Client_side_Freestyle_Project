@@ -6,7 +6,7 @@
     "Genre": "Action, Crime, Thriller",
     "Runtime": "110 min",
     "Actors": "Tom Hardy, Forest Whitaker",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMmE3MjI3YTItZjFhYy00MjBhLWE3YjUtOTVhY2ViMTVlZTgwXkEyXkFqcGdeQXVyMTk2ODc1MjY@._V1_.jpg"
+    "Poster": "Havoc.jpg"
   },
   {
     "Title": "Life or Something Like It",
@@ -15,7 +15,7 @@
     "Genre": "Comedy, Drama, Romance",
     "Runtime": "103 min",
     "Actors": "Angelina Jolie, Edward Burns",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMTIwNDg3MzE4OV5BMl5BanBnXkFtZTcwMzMyNzYyMQ@@._V1_FMjpg_UX1000_.jpg"
+    "Poster": "Lifeorsomethinglikeit.jpg"
   },
   {
     "Title": "The Life List",
@@ -24,7 +24,7 @@
     "Genre": "Drama",
     "Runtime": "96 min",
     "Actors": "Victoria Justice, Kelsey Grammer",
-    "Poster": "https://m.media-amazon.com/images/I/71qKgfq2yJL._AC_SL1500_.jpg"
+    "Poster": "thelifelist.jpg"
   },
   {
     "Title": "American Sniper",
@@ -33,7 +33,7 @@
     "Genre": "Action, Biography, Drama",
     "Runtime": "132 min",
     "Actors": "Bradley Cooper, Sienna Miller",
-    "Poster": "https://m.media-amazon.com/images/I/71lf4WTc+1L._AC_SY679_.jpg"
+    "Poster": "Americansniper.jpg"
   },
   {
     "Title": "A Dog's Way Home",
@@ -42,7 +42,7 @@
     "Genre": "Adventure, Drama, Family",
     "Runtime": "96 min",
     "Actors": "Ashley Judd, Jonah Hauer-King",
-    "Poster": "https://m.media-amazon.com/images/I/91H3j-BGmjL._AC_SL1500_.jpg"
+    "Poster": "adogswayhome.jpg"
   },
   {
     "Title": "Despicable Me 4",
@@ -51,7 +51,7 @@
     "Genre": "Animation, Adventure, Comedy",
     "Runtime": "TBD",
     "Actors": "Steve Carell, Kristen Wiig",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BNzdiMzdiYjktZjFiOC00YjRlLTk4NzYtZDMzYmIwMTUyNzQ4XkEyXkFqcGdeQXVyMTYzMDM0NTU@._V1_FMjpg_UX1000_.jpg"
+    "Poster": "despicableme5.jpg"
   },
   {
     "Title": "Oklahoma City Bombing: American Terror",
@@ -60,7 +60,7 @@
     "Genre": "Documentary, Crime",
     "Runtime": "90 min",
     "Actors": "Various",
-    "Poster": "https://m.media-amazon.com/images/I/81E6lpi1hCL._AC_UF894,1000_QL80_.jpg"
+    "Poster": "Oklahomacitybombingterror.jpg"
   },
   {
     "Title": "Murder at Yellowstone City",
@@ -69,6 +69,6 @@
     "Genre": "Western, Crime, Mystery",
     "Runtime": "127 min",
     "Actors": "Gabriel Byrne, Thomas Jane, Isaiah Mustafa",
-    "Poster": "https://m.media-amazon.com/images/I/81Mpu5kvoeL._AC_SY679_.jpg"
+    "Poster": "Murderatyellowstone.jpg"
   }
 ]
