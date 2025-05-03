@@ -2,22 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Netflix Movie Suggestions</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f8;
-      color: #333;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    header, footer {
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
       background-color: #1e2a38;
       color: white;
+      padding: 1rem 2rem;
       text-align: center;
-      padding: 1rem;
     }
 
     nav {
@@ -27,124 +32,132 @@
 
     nav a {
       color: white;
-      text-decoration: none;
       margin-right: 15px;
+      text-decoration: none;
       font-weight: bold;
     }
 
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     main {
-      max-width: 800px;
-      margin: auto;
       padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
     }
 
     section {
+      margin-bottom: 2rem;
       background: white;
+      padding: 1.5rem;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      padding: 1.5rem;
-      margin-bottom: 2rem;
     }
 
     select {
       padding: 0.5rem;
       font-size: 1rem;
       margin-top: 1rem;
+      margin-bottom: 1rem;
     }
 
-    img {
+    #movie-info img {
       width: 200px;
       margin-top: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
-    .info p {
-      margin: 0.3rem 0;
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #1e2a38;
+      color: white;
+      position: relative;
+      bottom: 0;
+      width: 100%;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Netflix Movie Suggestions</h1>
-    <p>Curated recommendations with ratings and details</p>
-  </header>
+<header>
+  <h1>Netflix Movie Suggestions</h1>
+  <p>Not sure what to watch? We got your back!</p>
+</header>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Top Picks</a>
-  </nav>
+<nav>
+  <a href="#">Movie selection</a>
+</nav>
 
-  <main>
-    <section>
-      <h2>Select a Movie</h2>
-      <select id="select-movie">
-        <option value="">-- Choose a movie --</option>
-      </select>
+<main>
+  <section>
+    <h2>Select a Movie</h2>
+    <select id="movie-select">
+      <option value="">-- Choose a Movie --</option>
+    </select>
 
-      <div id="movie-info" class="info">
-        <p><strong>Title:</strong> <span id="title">-</span></p>
-        <p><strong>Year:</strong> <span id="year">-</span></p>
-        <p><strong>Rating (IMDb):</strong> <span id="rating">-</span></p>
-        <p><strong>Genre:</strong> <span id="genre">-</span></p>
-        <p><strong>Duration:</strong> <span id="runtime">-</span></p>
-        <p><strong>Main Actors:</strong> <span id="actors">-</span></p>
-        <div id="poster-container"></div>
-      </div>
-    </section>
-  </main>
+    <div id="movie-info">
+      <p><strong>Title:</strong> <span id="title">-</span></p>
+      <p><strong>Year:</strong> <span id="year">-</span></p>
+      <p><strong>Rating:</strong> <span id="rating">-</span></p>
+      <p><strong>Genre:</strong> <span id="genre">-</span></p>
+      <p><strong>Runtime:</strong> <span id="runtime">-</span></p>
+      <p><strong>Actors:</strong> <span id="actors">-</span></p>
+      <div id="poster"></div>
+    </div>
+  </section>
+</main>
 
-  <footer>
-    <p>Netflix Suggestions &copy; 2025</p>
-  </footer>
+<footer>
+  <p>&copy; 2025 Movie Recommender</p>
+</footer>
 
-  <script>
-    const API_URL = "https://raw.githubusercontent.com/prof-rossetti/internet-technologies/main/data/sample-movies.json";
+<script>
+  const requestUrl = "https://raw.githubusercontent.com/RodrigoVivas91/RodrigoVivas_Client_side_Freestyle_Project/main/netflix-movies.json";
 
-    fetch(API_URL)
-      .then(response => response.json())
-      .then(data => {
-        const dropdown = document.getElementById("select-movie");
-        const title = document.getElementById("title");
-        const year = document.getElementById("year");
-        const rating = document.getElementById("rating");
-        const genre = document.getElementById("genre");
-        const runtime = document.getElementById("runtime");
-        const actors = document.getElementById("actors");
-        const posterContainer = document.getElementById("poster-container");
+  fetch(requestUrl)
+    .then(response => response.json())
+    .then(data => {
+      const select = document.getElementById("movie-select");
+      const title = document.getElementById("title");
+      const year = document.getElementById("year");
+      const rating = document.getElementById("rating");
+      const genre = document.getElementById("genre");
+      const runtime = document.getElementById("runtime");
+      const actors = document.getElementById("actors");
+      const poster = document.getElementById("poster");
 
-        // Fill dropdown
-        data.forEach((movie, index) => {
-          const option = document.createElement("option");
-          option.value = index;
-          option.textContent = movie.Title;
-          dropdown.appendChild(option);
-        });
-
-        dropdown.addEventListener("change", () => {
-          const selectedMovie = data[dropdown.value];
-
-          if (selectedMovie) {
-            title.textContent = selectedMovie.Title;
-            year.textContent = selectedMovie.Year;
-            rating.textContent = selectedMovie.Rating;
-            genre.textContent = selectedMovie.Genre;
-            runtime.textContent = selectedMovie.Runtime;
-            actors.textContent = selectedMovie.Actors;
-
-            posterContainer.innerHTML = "";
-            const img = document.createElement("img");
-            img.src = selectedMovie.Poster;
-            img.alt = selectedMovie.Title;
-            posterContainer.appendChild(img);
-          }
-        });
-      })
-      .catch(error => {
-        console.error("Error loading data:", error);
+      // Populate dropdown
+      data.forEach((movie, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = movie.Title;
+        select.appendChild(option);
       });
-  </script>
+
+      // On change, update display
+      select.addEventListener("change", () => {
+        const selected = data[select.value];
+        if (selected) {
+          title.textContent = selected.Title;
+          year.textContent = selected.Year;
+          rating.textContent = selected.Rating;
+          genre.textContent = selected.Genre;
+          runtime.textContent = selected.Runtime;
+          actors.textContent = selected.Actors;
+
+          poster.innerHTML = "";
+          const img = document.createElement("img");
+          img.src = selected.Poster;
+          img.alt = `${selected.Title} poster`;
+          poster.appendChild(img);
+        }
+      });
+    })
+    .catch(error => {
+      console.error("Error fetching movie data:", error);
+    });
+</script>
 
 </body>
 </html>
